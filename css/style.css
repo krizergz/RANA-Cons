@@ -1,4 +1,4 @@
-ul, h1, h2, h3, p, ul, li, img {
+* {
   padding: 0;
   margin: 0;
 }
@@ -56,6 +56,8 @@ img {
 
 /* Header */
 header#main-header {
+  z-index: 2;
+  top: 0;
   background-color: var(--primary-color);
   width: 100%;
   color: #fff;
@@ -109,17 +111,51 @@ header#main-header #navigation a:hover {
 
 /* Home */
 #home {
-  background-color: #222;
   color: #fff;
   text-align: center;
-  min-height: 100vh;
+}
+
+#home::after {
+  content: "";
+  height: 100vh;
+  width: 100%;
+  background-image: url(../images/showcase.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  filter: blur(10px);
+  /* Same as above but for Safari 6.0 - 9.0 */
+  -webkit-filter: blur(10px);
+  transition: all 900ms;
+  /* Same as above but for Safari */
+  -webkit-transition: all 900ms;
+}
+
+#home:hover::after {
+  filter: blur(0);
+  /* Same as above but for Safari 6.0 - 9.0 */
+  -webkit-filter: blur(0);
+}
+
+#home:hover .content {
+  filter: blur(2px);
+  /* Same as above but for Safari 6.0 - 9.0 */
+  -webkit-filter: blur(2px);
+}
+
+#home .container {
+  z-index: 1;
+  position: absolute;
+  margin: auto;
+  width: 100%;
 }
 
 #home h1 {
+  margin-top: 40vh;
   font-size: 3rem;
   font-weight: 1000;
   line-height: 1.2em;
-  margin-top: 40vh;
 }
 
 #home h2 {
